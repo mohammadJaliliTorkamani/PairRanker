@@ -1,6 +1,6 @@
 import json
 import os
-from datetime import date, datetime
+from datetime import datetime
 
 from app.db import get_db
 

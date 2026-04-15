@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
-from app.routes import auth, survey
 from app.db import get_db
+from app.routes import auth, survey
 
 app = FastAPI(title="CASEY")
 

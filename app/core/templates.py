@@ -1,4 +1,5 @@
 import os
+
 from fastapi.templating import Jinja2Templates
 
 # Always anchor to project root via environment or fallback

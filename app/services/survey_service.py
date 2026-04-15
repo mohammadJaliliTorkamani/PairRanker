@@ -1,5 +1,7 @@
 import random
+
 from app.db import get_db
+
 
 async def fetch_pairs():
     db = get_db()
