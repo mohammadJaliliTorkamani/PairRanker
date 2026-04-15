@@ -1,3 +1,6 @@
 /.env
 /data/
 /.venv/
+/.idea/
+/app/__pychache__/
+/*/__pychache__/
