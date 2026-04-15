@@ -3,7 +3,7 @@ import os
 from pymongo import MongoClient
 
 client = MongoClient("mongodb://mongo:27017")
-db = client.casey_db
+db = client.pairranker_db
 
 
 def seed_user_data(user_id: str):
