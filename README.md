@@ -1,6 +1,6 @@
-# PairRank — Human Evaluation Platform for Text Similarity
+# PairRanker — Human Evaluation Platform for Text Similarity
 
-PairRank is a lightweight, Dockerized web application built with FastAPI for conducting human evaluation studies on text similarity. It enables users to compare pairs of descriptions and rate their similarity while providing reasoning.
+PairRanker is a lightweight, Dockerized web application built with FastAPI for conducting human evaluation studies on text similarity. It enables users to compare pairs of descriptions and rate their similarity while providing reasoning.
 
 This project is designed for both research experiments and backend engineering portfolios, emphasizing clean architecture, reproducibility, and modular design.
 
