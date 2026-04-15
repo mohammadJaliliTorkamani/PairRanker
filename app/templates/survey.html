@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ question }}</h2>
+
+<p>User: {{ user_id }}</p>
+
+<form action="/submit-all" method="post">
+
+    {% for p in pairs %}
+
+    <div style="border:1px solid #ddd; padding:15px; margin-bottom:20px;">
+
+        <!-- REQUIRED IDENTIFIERS -->
+        <input type="hidden" name="pair_id_{{ loop.index }}" value="{{ p.id }}">
+
+        <input type="hidden" name="left_{{ loop.index }}" value="{{ p.left }}">
+        <input type="hidden" name="right_{{ loop.index }}" value="{{ p.right }}">
+        <input type="hidden" name="left_source_{{ loop.index }}" value="{{ p.left_source }}">
+        <input type="hidden" name="right_source_{{ loop.index }}" value="{{ p.right_source }}">
+
+        <div style="display:flex; gap:20px;">
+            <div style="flex:1; padding:10px; background:#f5f5f5;">
+                {{ p.left }}
+            </div>
+
+            <div style="flex:1; padding:10px; background:#f5f5f5;">
+                {{ p.right }}
+            </div>
+        </div>
+
+        <br>
+
+        <label>Rating:</label>
+        <select name="rating_{{ loop.index }}">
+            <option value="highly">Highly similar</option>
+            <option value="moderately">Moderately similar</option>
+            <option value="weakly">Weakly similar</option>
+        </select>
+
+        <br><br>
+
+        <textarea
+            name="reason_{{ loop.index }}"
+            placeholder="Explain your reasoning..."
+            style="width:100%; height:140px;"
+            required
+        ></textarea>
+
+    </div>
+
+    {% endfor %}
+
+    <button type="submit" style="padding:10px 20px; font-size:16px;">
+        Submit All Responses
+    </button>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+body {
+    font-family: Arial;
+    background: #f6f7fb;
+}
+
+.container {
+    width: 800px;
+    margin: auto;
+    padding: 30px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.pair {
+    display: flex;
+    gap: 10px;
+}
+
+.box {
+    flex: 1;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 8px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
