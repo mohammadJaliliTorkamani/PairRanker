@@ -1,5 +1,3 @@
-# CASEY
-
 A minimal research survey platform for vulnerability similarity studies.
 
 ## Run
