@@ -1,22 +1,21 @@
 import random
 
-from app.db import get_db
+from app.db import fetch_all_pairs, insert_response
 
 
 async def fetch_pairs():
-    db = get_db()
-    pairs = await db.pairs.find().to_list(1000)
+    pairs = fetch_all_pairs(limit=1000)
 
     # Randomize left/right order
     randomized = []
     for p in pairs:
         if random.random() > 0.5:
-            left, right = p["left"], p["right"]
+            left, right = p["left_text"], p["right_text"]
         else:
-            left, right = p["right"], p["left"]
+            left, right = p["right_text"], p["left_text"]
 
         randomized.append({
-            "id": str(p["_id"]),
+            "id": str(p["id"]),
             "left": left,
             "right": right
         })
@@ -26,8 +25,7 @@ async def fetch_pairs():
 
 
 async def save_response(user_id, pair_id, rating, reason):
-    db = get_db()
-    await db.responses.insert_one({
+    insert_response({
         "user_id": user_id,
         "pair_id": pair_id,
         "rating": rating,

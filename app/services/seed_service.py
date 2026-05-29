@@ -1,10 +1,7 @@
 import json
 import os
 
-from pymongo import MongoClient
-
-client = MongoClient("mongodb://mongo:27017")
-db = client.pairranker_db
+from app.db import initialize_database, replace_user_pairs
 
 
 def seed_user_data(user_id: str):
@@ -16,9 +13,6 @@ def seed_user_data(user_id: str):
 
     if not os.path.exists(path):
         raise FileNotFoundError(f"No dataset found for user {user_id}")
-
-    # Clear old dataset for user
-    db.pairs.delete_many({"user_id": user_id})
 
     pairs = []
 
@@ -32,7 +26,7 @@ def seed_user_data(user_id: str):
                 "right": obj["prediction"]
             })
 
-    if pairs:
-        db.pairs.insert_many(pairs)
+    initialize_database()
+    replace_user_pairs(user_id, pairs)
 
     print(f"[SEED] Loaded {len(pairs)} pairs for {user_id}")

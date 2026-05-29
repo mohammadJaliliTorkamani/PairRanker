@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, BackgroundTasks
 from fastapi.responses import HTMLResponse
 
 from app.core.templates import templates
-from app.db import get_db
+from app.db import replace_user_responses
 from app.services.export_service import export_user_results
 from app.services.user_dataset_service import load_user_dataset
 
@@ -43,8 +43,6 @@ async def submit_all(request: Request, background_tasks: BackgroundTasks):
     if not user_id:
         return HTMLResponse("Not logged in", status_code=401)
 
-    db = get_db()
-
     responses = []
 
     # safer loop (avoids key-order bugs)
@@ -79,10 +77,7 @@ async def submit_all(request: Request, background_tasks: BackgroundTasks):
             "prediction": prediction
         })
 
-    await db.responses.delete_many({"user_id": user_id})
-
-    if responses:
-        await db.responses.insert_many(responses)
+    replace_user_responses(user_id, responses)
 
     background_tasks.add_task(export_user_results, user_id)
 

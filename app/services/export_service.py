@@ -2,13 +2,11 @@ import json
 import os
 from datetime import datetime
 
-from app.db import get_db
+from app.db import fetch_user_responses
 
 
-async def export_user_results(user_id: str):
-    db = get_db()
-
-    responses = await db.responses.find({"user_id": user_id}).to_list(10000)
+def export_user_results(user_id: str):
+    responses = fetch_user_responses(user_id, limit=10000)
 
     output = []
     output.append({

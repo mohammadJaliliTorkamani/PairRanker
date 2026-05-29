@@ -12,7 +12,7 @@ This project is designed for both research experiments and backend engineering p
 - 🎲 Randomized pair order and left/right swapping
 - 🧠 Human similarity annotation (3-level rating)
 - ✍️ Free-text reasoning collection
-- 💾 MongoDB storage for responses
+- 💾 MySQL storage for responses
 - 📤 Automatic export to JSON files
 - 🐳 Fully Dockerized (one-command startup)
 - 🎯 Minimal and clean UI for user studies
@@ -22,7 +22,7 @@ This project is designed for both research experiments and backend engineering p
 ## 🧱 Tech Stack
 
 - Backend: FastAPI
-- Database: MongoDB (Motor async client)
+- Database: MySQL
 - Frontend: Jinja2 templates + HTML/CSS
 - Containerization: Docker + Docker Compose
 
@@ -70,7 +70,7 @@ Each line:
 
 Results are:
 
-- Stored in MongoDB
+- Stored in MySQL
 - Exported as JSON:
 
 data/results/results_{user_id}.json
